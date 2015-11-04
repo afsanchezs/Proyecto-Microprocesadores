@@ -1,0 +1,20 @@
+El proyecto escogido fue el de Telecomunicaciones,
+el cual consiste en realizar una transmision de un mensaje 
+mediante un medio cableado.
+
+Para realizar dicha practica utilizaremos como mensaje una señal analoga 
+generada mediante un sensor infrarojo, el cual funcionaria como indicador de distancia 
+para el parqueo de un automovil.
+
+Cuando ya se halla obtenido el mensaje, se realizara una conversion analogo/Digital, para poder
+trabajar de una manera mas practica la señal a tratar.
+
+El paso a seguir consiste en realizar la codificacion de fuente, para asi 
+despues realizar la codificacion de canal, incluyendo bits de redundancia mediante la paridad para codificar el mensaje
+que se va a transmitir.
+
+A continuacion realizaremos la modulacion de una señal digital y asi lograr transmitirla por el medio (cable),
+cuando la señal llegue a receptor se realizara el proceso contrario; consiste en demodular la señal,
+utilizar el dodigo de canal (codigo hamming) para decodificar la señal y asi 
+obtener el mensaje nuevamente corrigiendo posibles errores, despues se realizara la decodificacion de fuente
+para por ultimo realizar una conversion Digital/analoga y asi mostrar nuevamente el mensaje enviado. 
