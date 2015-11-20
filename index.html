@@ -40,17 +40,26 @@
 
 <p>Donde el parámetro de entrada es <code>value</code> que hace referencia al valor en binario del valor análogo leído.</p>
 
-<p><code>uint16_t Codificacion(uint16_t value)
-</code>{<code>
-</code>uint16_t d0=0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,sd1,sd2,sd3,sd4,p1,p2,p4,p8,p16=0`;</p>
+<p><code>uint16_t Codificacion(uint16_t value)</code></p>
 
-<p><code>d1=(value&lt;&lt;6)&gt;&gt;15</code>;
-  <code>d2=(value&lt;&lt;7)&gt;&gt;15</code>;
-  <code>d3=(value&lt;&lt;8)&gt;&gt;15;</code>
-  <code>d4=(value&lt;&lt;9)&gt;&gt;15;</code>
-  <code>d5=(value&lt;&lt;10)&gt;&gt;15;</code>
-  <code>d6=(value&lt;&lt;11)&gt;&gt;15;</code>
-  <code>d7=(value&lt;&lt;12)&gt;&gt;15;</code>
+<p><code>{</code></p>
+
+<pre><code>`uint16_t d0=0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,sd1,sd2,sd3,sd4,p1,p2,p4,p8,p16=0`;
+</code></pre>
+
+<p><code>d1=(value&lt;&lt;6)&gt;&gt;15</code>;</p>
+
+<p><code>d2=(value&lt;&lt;7)&gt;&gt;15</code>;</p>
+
+<p><code>d3=(value&lt;&lt;8)&gt;&gt;15</code>;</p>
+
+<p><code>d4=(value&lt;&lt;9)&gt;&gt;15</code>;</p>
+
+<p><code>d5=(value&lt;&lt;10)&gt;&gt;15</code>;</p>
+
+<p><code>d6=(value&lt;&lt;11)&gt;&gt;15</code>;</p>
+
+<p><code>d7=(value&lt;&lt;12)&gt;&gt;15;</code>
   <code>d8=(value&lt;&lt;13)&gt;&gt;15;</code>
   <code>d9=(value&lt;&lt;14)&gt;&gt;15;</code>
   <code>d10=(value&lt;&lt;15)&gt;&gt;15;</code>
