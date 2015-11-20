@@ -67,46 +67,81 @@
 
 <p><code>d10=(value&lt;&lt;15)&gt;&gt;15</code>;</p>
 
-<p><code>sd1=d1+d3+d4+d6+d8+d10</code>;
-  <code>sd2=d2+d3+d5+d6+d9+d10</code>;</p>
+<p><code>sd1=d1+d3+d4+d6+d8+d10</code>;</p>
 
-<p><code>sd3=d1+d2+d3+d7+d8+d9+d10</code>;
-  <code>sd4=d4+d5+d6+d7+d8+d9+d10;</code>
-  <code>if(sd1%2==0)</code>
-  <code>{</code>
-  <code>p1=0;</code>
-  <code>}</code>
-  <code>else</code>
-  <code>{</code>
-  <code>p1=1;</code>
-  <code>}</code>
-  <code>if(sd2%2==0)</code>
-  <code>{</code>
-  <code>p2=0;</code>
-  <code>}</code>
-  <code>else</code>
-  <code>{</code>
-  <code>p2=1;</code>
-  <code>}</code>
-  <code>if(sd3%2==0)</code>
-  <code>{</code>
-  <code>p4=0;</code>
-  <code>}</code>
-  <code>else</code>
-  <code>{</code>
-  <code>p4=1;</code>
-  <code>}</code>
-  <code>if(sd4%2==0)</code>
-  <code>{</code>
-  <code>p8=0;</code>
-  <code>}</code>
-  <code>else</code>
-  <code>{</code>
-  <code>p8=1;</code>
-  <code>}</code>
-  <code>m=(p1&lt;&lt;15)+(p2&lt;&lt;14)+(p4&lt;&lt;12)+(d1&lt;&lt;11)+(d2&lt;&lt;10)+(d3&lt;&lt;9)+(p8&lt;&lt;8)+(d4&lt;&lt;7)+(d5&lt;&lt;6)+(d6&lt;&lt;5)+(d7&lt;&lt;4)+(d8&lt;&lt;3)+(d9&lt;&lt;2)+(d10&lt;&lt;1);</code></p>
+<p><code>sd2=d2+d3+d5+d6+d9+d10</code>;</p>
 
-<p><code>return m;</code></p>
+<p><code>sd3=d1+d2+d3+d7+d8+d9+d10</code>;</p>
+
+<p><code>sd4=d4+d5+d6+d7+d8+d9+d10</code>;</p>
+
+<p><code>if(sd1%2==0)</code></p>
+
+<p><code>{</code></p>
+
+<p><code>p1=0</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<p><code>p1=1</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>if(sd2%2==0)</code></p>
+
+<p><code>{</code></p>
+
+<p><code>p2=0</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<p><code>p2=1</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>if(sd3%2==0)</code></p>
+
+<p><code>{</code></p>
+
+<p><code>p4=0</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<p><code>p4=1</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>if(sd4%2==0)</code></p>
+
+<p><code>{</code></p>
+
+<p><code>p8=0</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<p><code>p8=1</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>m=(p1&lt;&lt;15)+(p2&lt;&lt;14)+(p4&lt;&lt;12)+(d1&lt;&lt;11)+(d2&lt;&lt;10)+(d3&lt;&lt;9)+(p8&lt;&lt;8)+(d4&lt;&lt;7)+(d5&lt;&lt;6)+(d6&lt;&lt;5)+(d7&lt;&lt;4)+(d8&lt;&lt;3)+(d9&lt;&lt;2)+(d10&lt;&lt;1)</code>;</p>
+
+<p><code>return m</code>;</p>
 
 <p><code>}</code></p>
 
