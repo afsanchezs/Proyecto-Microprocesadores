@@ -19,8 +19,10 @@
     </section>
 
     <section class="main-content">
-      <p>``### Bienvenido a la documentación referente al proyecto final del área de microprocesadores.
-En este informe se mostraran los códigos implementados para las librerías, con el fin de lograr cumplir con los objetivos del proyecto, también se mostrara al final el código completo. </p>
+      <h3>
+<a id="bienvenido-a-la-documentación-referente-al-proyecto-final-del-área-de-microprocesadores" class="anchor" href="#bienvenido-a-la-documentaci%C3%B3n-referente-al-proyecto-final-del-%C3%A1rea-de-microprocesadores" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bienvenido a la documentación referente al proyecto final del área de microprocesadores.</h3>
+
+<p>En este informe se mostraran los códigos implementados para las librerías, con el fin de lograr cumplir con los objetivos del proyecto, también se mostrara al final el código completo. </p>
 
 <h3>
 <a id="propósito-del-proyecto" class="anchor" href="#prop%C3%B3sito-del-proyecto" aria-hidden="true"><span class="octicon octicon-link"></span></a>Propósito del Proyecto</h3>
@@ -147,10 +149,300 @@ En este informe se mostraran los códigos implementados para las librerías, con
 
 <p>Las variables <code>sd1</code>,<code>sd2</code>,<code>sd3</code> y <code>sd4</code> son las ecuaciones de paridad, realizadas para determinar si existe o no dicha condición de paridad, mientras que los parámetros <code>p1</code>,<code>p2</code>,<code>p4</code> y <code>p8</code> son los datos de paridad generados para la redundancia.</p>
 
+<p><code>m</code> Es el mensaje ya codificado.</p>
+
 <h3>
 <a id="decodificacion-hamming" class="anchor" href="#decodificacion-hamming" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decodificacion Hamming</h3>
 
 <p>La decodificacion Hamming consiste en detectar, mediante la paridad (par o impar), errores posibles en el código recibido, también corrige dichos errores.</p>
+
+<p>La funcion implementada es:
+<code>uint16_t Decodificacion (uint16_t m)</code>;</p>
+
+<p>Donde <code>m</code> es el mensaje recibido</p>
+
+<p><code>uint16_t Decodificacion (uint16_t m)</code>
+<code>{</code>
+<code>uint16_t t[16],st1,st2,st3,st4,m1,m2,m3,m4,md</code>;</p>
+
+<p><code>t[0]=m&gt;&gt;15</code>;</p>
+
+<p><code>t[1]=(m&lt;&lt;1)&gt;&gt;15</code>;</p>
+
+<p><code>t[2]=(m&lt;&lt;2)&gt;&gt;15</code>;</p>
+
+<p><code>t[3]=(m&lt;&lt;3)&gt;&gt;15</code>;</p>
+
+<p><code>t[4]=(m&lt;&lt;4)&gt;&gt;15</code>;</p>
+
+<p><code>t[5]=(m&lt;&lt;5)&gt;&gt;15</code>;</p>
+
+<p><code>t[6]=(m&lt;&lt;6)&gt;&gt;15</code>;</p>
+
+<p><code>t[7]=(m&lt;&lt;7)&gt;&gt;15</code>;</p>
+
+<p><code>t[8]=(m&lt;&lt;8)&gt;&gt;15</code>;</p>
+
+<p><code>t[9]=(m&lt;&lt;9)&gt;&gt;15</code>;</p>
+
+<p><code>t[10]=(m&lt;&lt;10)&gt;&gt;15</code>;</p>
+
+<p><code>t[11]=(m&lt;&lt;11)&gt;&gt;15</code>;</p>
+
+<p><code>t[12]=(m&lt;&lt;12)&gt;&gt;15</code>;</p>
+
+<p><code>t[13]=(m&lt;&lt;13)&gt;&gt;15</code>;</p>
+
+<p><code>t[14]=(m&lt;&lt;14)&gt;&gt;15</code>;</p>
+
+<p><code>t[15]=(m&lt;&lt;15)&gt;&gt;15</code>;</p>
+
+<p><code>st1=t[0]+t[2]+t[4]+t[6]+t[8]+t[10]+t[12]+t[14]</code>;</p>
+
+<p><code>st2=t[1]+t[2]+t[5]+t[6]+t[9]+t[10]+t[13]+t[14]</code>;</p>
+
+<p><code>st3=t[3]+t[4]+t[5]+t[6]+t[11]+t[12]+t[13]+t[14]</code>;</p>
+
+<p><code>st4=t[7]+t[8]+t[9]+t[10]+t[11]+t[12]+t[13]+t[14]</code>;</p>
+
+<p><code>m1=st1%2</code>;</p>
+
+<p><code>m2=st2%2</code>;</p>
+
+<p><code>m3=st3%2</code>;</p>
+
+<p><code>m4=st4%2</code>;</p>
+
+<p><code>if((m1!=0)&amp;&amp;(m3!=0))</code></p>
+
+<p><code>{</code></p>
+
+<p><code>if(t[4]==0)</code></p>
+
+<p><code>{</code></p>
+
+<pre><code>`  t[4]=1`;
+</code></pre>
+
+<p><code>}</code></p>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[4]=0</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+
+<p><code>if((m2!=0)&amp;&amp;(m3!=0))</code></p>
+
+<p><code>{</code></p>
+
+<p><code>if(t[5]==0)</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[5]=1</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[5]=0;</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+
+<p><code>if((m1!=0)&amp;&amp;(m2!=0)&amp;&amp;(m3!=0))</code></p>
+
+<p><code>{</code></p>
+
+<p><code>if(t[6]==0)</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[6]=1</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[6]=0</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+
+<p><code>if((m1!=0)&amp;&amp;(m4!=0))</code></p>
+
+<p><code>{</code>
+<code>if(t[8]==0)</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[8]=1</code>;</p>
+
+<pre><code>`}`
+</code></pre>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<pre><code>`  t[8]=0`;
+</code></pre>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+
+<p><code>if((m2!=0)&amp;&amp;(m4!=0))</code></p>
+
+<p><code>{</code></p>
+
+<p><code>if(t[9]==0)</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[9]=1;</code></p>
+
+<p><code>}</code></p>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[9]=0</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+
+<p><code>if((m1!=0)&amp;&amp;(m2!=0)&amp;&amp;(m4!=0))</code></p>
+
+<p><code>{</code></p>
+
+<p><code>if(t[10]==0)</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[10]=1</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[10]=0</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+
+<p><code>if((m3!=0)&amp;&amp;(m4!=0))</code></p>
+
+<p><code>{</code></p>
+
+<p><code>if(t[11]==0)</code></p>
+
+<p><code>{</code></p>
+
+<pre><code> ` t[11]=1`;
+</code></pre>
+
+<p><code>}</code></p>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[11]=0</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+
+<p><code>if((m1!=0)&amp;&amp;(m3!=0)&amp;&amp;(m4!=0))</code></p>
+
+<p><code>{</code></p>
+
+<p><code>if(t[12]==0)</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[12]=1</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<pre><code>  `t[12]=0`;
+
+`}`
+</code></pre>
+
+<p><code>}</code></p>
+
+<p><code>if((m2!=0)&amp;&amp;(m3!=0)&amp;&amp;(m4!=0))</code></p>
+
+<p><code>{</code></p>
+
+<pre><code>`if(t[13]==0)`
+
+`{`
+
+  `t[13]=1`;
+
+`}`
+
+`else`
+</code></pre>
+
+<p><code>{</code></p>
+
+<pre><code>  `t[13]=0`;
+
+`}`
+</code></pre>
+
+<p><code>}</code></p>
+
+<p><code>if((m1!=0)&amp;&amp;(m2!=0)&amp;&amp;(m3!=0)&amp;&amp;(m4!=0))</code></p>
+
+<p><code>{</code></p>
+
+<p><code>if(t[14]==0)</code></p>
+
+<p><code>{</code></p>
+
+<p><code>t[14]=1</code>;</p>
+
+<p><code>}</code></p>
+
+<p><code>else</code></p>
+
+<p><code>{</code></p>
+
+<pre><code>`  t[14]=0`;
+</code></pre>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+
+<p>md=(t[4]&lt;&lt;9)+(t[5]&lt;&lt;8)+(t[6]&lt;&lt;7)+(t[8]&lt;&lt;6)+(t[9]&lt;&lt;5)+(t[10]&lt;&lt;4)+(t[11]&lt;&lt;3)+(t[12]&lt;&lt;2)+(t[13]&lt;&lt;1)+t[14]; 
+return md;
+}</p>
 
 <h3>
 <a id="modulación" class="anchor" href="#modulaci%C3%B3n" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modulación</h3>
