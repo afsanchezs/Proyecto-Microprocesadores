@@ -38,7 +38,63 @@
 
 <p><code>uint16_t Codificacion ( uint16_t value )</code>;</p>
 
-<p>Donde el parámetro de entrada es <code>value</code> que hace referencia.......</p>
+<p>Donde el parámetro de entrada es <code>value</code> que hace referencia al valor en binario del valor análogo leído.</p>
+
+<p>`uint16_t Codificacion(uint16_t value)
+{
+    uint16_t d0=0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,sd1,sd2,sd3,sd4,p1,p2,p4,p8,p16=0;</p>
+
+<p>d1=(value&lt;&gt;15;
+  d2=(value&lt;&gt;15;
+  d3=(value&lt;&gt;15;
+  d4=(value&lt;&gt;15;
+  d5=(value&lt;&gt;15;
+  d6=(value&lt;&gt;15;
+  d7=(value&lt;&gt;15;
+  d8=(value&lt;&gt;15;
+  d9=(value&lt;&gt;15;
+  d10=(value&lt;&gt;15;
+  sd1=d1+d3+d4+d6+d8+d10;
+  sd2=d2+d3+d5+d6+d9+d10;
+  sd3=d1+d2+d3+d7+d8+d9+d10;
+  sd4=d4+d5+d6+d7+d8+d9+d10;
+  if(sd1%2==0)
+   {
+     p1=0;
+   }
+  else
+  {
+    p1=1;
+  }
+  if(sd2%2==0)
+   {
+     p2=0;
+   }
+  else
+  {
+    p2=1;
+  }
+  if(sd3%2==0)
+   {
+     p4=0;
+   }
+  else
+  {
+    p4=1;
+  }
+  if(sd4%2==0)
+   {
+     p8=0;
+   }
+  else
+  {
+    p8=1;
+  }
+  m=(p1&lt;&lt;15)+(p2&lt;&lt;14)+(p4&lt;&lt;12)+(d1&lt;&lt;11)+(d2&lt;&lt;10)+(d3&lt;&lt;9)+(p8&lt;&lt;8)+(d4&lt;&lt;7)+(d5&lt;&lt;6)+(d6&lt;&lt;5)+(d7&lt;&lt;4)+(d8&lt;&lt;3)+(d9&lt;&lt;2)+(d10&lt;&lt;1);</p>
+
+<p>return m;</p>
+
+<p>}`</p>
 
 <h3>
 <a id="decodificacion-hamming" class="anchor" href="#decodificacion-hamming" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decodificacion Hamming</h3>
