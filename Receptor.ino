@@ -1,0 +1,169 @@
+#include <Wire.h>
+uint16_t H,i,m,md1,md2,value,t[16],posicion,st1,st2,st3,st4,m1,m2,m3,m4,md,md3;
+void setup() {
+  Wire.begin(8);                // join i2c bus with address #8
+  Wire.onReceive(receiveEvent); // register event
+  Serial.begin(9600);           // start serial for output
+  pinMode(3,OUTPUT);
+}
+
+void loop() {
+  delay(100);
+}
+
+void receiveEvent(int howMany) {
+  //while (1 < Wire.available()) { // loop through all but the last
+  byte c = Wire.read(); // receive byte as a character
+  //}
+  byte x = Wire.read();    // receive byte as an integer 
+  md1=(uint16_t)c;
+  md2=(uint16_t)x;
+  m=(md1<<8)+md2;
+  Serial.print("Mensaje Recibido: ");
+  Serial.print(m,BIN); 
+  Serial.print("\n");
+  t[0]=m>15;
+  t[1]=(m<<1)>>15;
+  t[2]=(m<<2)>>15;
+  t[3]=(m<<3)>>15;
+  t[4]=(m<<4)>>15;
+  t[5]=(m<<5)>>15;
+  t[6]=(m<<6)>>15;
+  t[7]=(m<<7)>>15;
+  t[8]=(m<<8)>>15;
+  t[9]=(m<<9)>>15; 
+  t[10]=(m<<10)>>15;
+  t[11]=(m<<11)>>15;
+  t[12]=(m<<12)>>15;
+  t[13]=(m<<13)>>15;
+  t[14]=(m<<14)>>15;
+  t[15]=(m<<15)>>15;
+  st1=t[0]+t[2]+t[4]+t[6]+t[8]+t[10]+t[12]+t[14];
+  st2=t[1]+t[2]+t[5]+t[6]+t[9]+t[10]+t[13]+t[14];
+  st3=t[3]+t[4]+t[5]+t[6]+t[11]+t[12]+t[13]+t[14];
+  st4=t[7]+t[8]+t[9]+t[10]+t[11]+t[12]+t[13]+t[14];
+  m1=st1%2;
+  m2=st2%2;
+  m3=st3%2;
+  m4=st4%2;
+  if((m1!=0)&&(m3!=0))
+  {
+    if(t[4]==0)
+    {
+      t[4]=1;
+    }
+    else
+    {
+      t[4]=0;
+    }
+  }
+  if((m2!=0)&&(m3!=0))
+  {
+    if(t[5]==0)
+    {
+      t[5]=1;
+    }
+    else
+    {
+      t[5]=0;
+    }
+  }
+  if((m1!=0)&&(m2!=0)&&(m3!=0))
+  {
+    if(t[6]==0)
+    {
+      t[6]=1;
+    }
+    else
+    {
+      t[6]=0;
+    }
+  }
+  if((m1!=0)&&(m4!=0))
+  {
+    if(t[8]==0)
+    {
+      t[8]=1;
+    }
+    else
+    {
+      t[8]=0;
+    }
+  }
+  if((m2!=0)&&(m4!=0))
+  {
+    if(t[9]==0)
+    {
+      t[9]=1;
+    }
+    else
+    {
+      t[9]=0;
+    }
+  }
+  if((m1!=0)&&(m2!=0)&&(m4!=0))
+  {
+    if(t[10]==0)
+    {
+      t[10]=1;
+    }
+    else
+    {
+      t[10]=0;
+    }
+  }
+  if((m3!=0)&&(m4!=0))
+  {
+    if(t[11]==0)
+    {
+      t[11]=1;
+    }
+    else
+    {
+      t[11]=0;
+    }
+  }
+  if((m1!=0)&&(m3!=0)&&(m4!=0))
+  {
+    if(t[12]==0)
+    {
+      t[12]=1;
+    }
+    else
+    {
+      t[12]=0;
+    }
+  }
+  if((m2!=0)&&(m3!=0)&&(m4!=0))
+  {
+    if(t[13]==0)
+    {
+      t[13]=1;
+    }
+    else
+    {
+      t[13]=0;
+    }
+  }
+  if((m1!=0)&&(m2!=0)&&(m3!=0)&&(m4!=0))
+  {
+    if(t[14]==0)
+    {
+      t[14]=1;
+    }
+    else
+    {
+      t[14]=0;
+    }
+  }
+  md=(t[4]<<9)+(t[5]<<8)+(t[6]<<7)+(t[8]<<6)+(t[9]<<5)+(t[10]<<4)+(t[11]<<3)+(t[12]<<2)+(t[13]<<1)+t[14];
+  Serial.print("Mensaje Decodificado: ");
+  Serial.print(md,BIN);
+  Serial.print("\n");
+  Serial.print("PWM Transmitido:");
+  Serial.print(md);
+  Serial.print("\n");
+  Serial.print("\n");
+  Serial.print("\n");
+  analogWrite(3,md);
+}
