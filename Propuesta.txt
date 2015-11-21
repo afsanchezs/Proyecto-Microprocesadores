@@ -2,9 +2,7 @@ El proyecto escogido fue el de Telecomunicaciones,
 el cual consiste en realizar una transmision de un mensaje 
 mediante un medio cableado.
 
-Para realizar dicha practica utilizaremos como mensaje una señal analoga 
-generada mediante un sensor infrarojo, el cual funcionaria como indicador de distancia 
-para el parqueo de un automovil.
+Para realizar dicha practica utilizaremos como mensaje una voltaje escalado (0-5)V multiplicando por 51 para generar un PWM con el receptor.
 
 Cuando ya se halla obtenido el mensaje, se realizara una conversion analogo/Digital, para poder
 trabajar de una manera mas practica la señal a tratar.
