@@ -32,7 +32,7 @@
 <h3>
 <a id="codificación-hamming" class="anchor" href="#codificaci%C3%B3n-hamming" aria-hidden="true"><span class="octicon octicon-link"></span></a>Codificación Hamming</h3>
 
-<p>La codificación o código Hamming consiste en inyectarle bits de redundancia al mensaje, cumpliendo con la Paridad que consiste en agregar bits de paridad  que indique si el número de los bits de valor 1 en los datos precedentes es par o impar, esto con el fin que el mensaje llegue con la menor cantidad de errores posibles.</p>
+<p>La codificación o código Hamming consiste en inyectarle bits de redundancia al mensaje, cumpliendo con la ley de  Paridad que consiste en agregar bits de paridad  que indique si el número de los bits de valor 1 en los datos presentes es par o impar, esto con el fin que el mensaje llegue con la menor cantidad de errores posibles.</p>
 
 <p>En el código se muestra como se utilizan unas ecuaciones generadas desde el mismo proceso de codificación, dichas formulas permiten determinar, mediante una suma algebraica simple, si la paridad es par o impar. Para el caso del proyecto fue utilizada la paridad par, por lo tanto se realizan comparaciones entre el modulo del valor  generado mediante la suma y el valor 0, determinando si el valor de la paridad es 1 o 0, para luego así juntar los valores de paridad y los datos para al fin generar el mensaje codificado. </p>
 
@@ -41,7 +41,11 @@
 
 <p>La decodificacion Hamming consiste en detectar, mediante la paridad (par o impar), errores posibles en el código recibido, también corrige dichos errores.</p>
 
-<p>Para la corrección de errores, se es utilizado un conjunto de ecuaciones (encontradas durante el proceso de diseño del proyecto), las cuales permiten mediante comparaciones simples determinar en que paridad y/o dato se ha producido un error.</p>
+<p>Para la corrección de errores, se es utilizado un conjunto de ecuaciones (encontradas durante el proceso de diseño del proyecto), las cuales permiten mediante comparaciones simples determinar en que paridad y/o dato se ha producido un error, para luego realizando comparaciones cambiar dicho bit por el opuesto.</p>
+
+<h3>
+<a id="vídeo-envío-de-datos-por-medio-de-arduino" class="anchor" href="#v%C3%ADdeo-env%C3%ADo-de-datos-por-medio-de-arduino" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://www.youtube.com/watch?v=ow4kUFvyeJY&amp;feature=youtu.be">Vídeo envío de datos por medio de arduino</a>
+</h3>
 
 <h3>
 <a id="código-completo" class="anchor" href="#c%C3%B3digo-completo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Código Completo</h3>
